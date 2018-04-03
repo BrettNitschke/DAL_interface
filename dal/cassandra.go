@@ -9,13 +9,12 @@ import (
 )
 
 type Dal interface {
-  GetUserByUuid(userId gocql.uuid) (model.User)
-  //All other functions that access DB go here
+	GetUserByUuid(userId gocql.uuid) model.User
+	//All other functions that access DB go here
 }
 
-
 type Session struct {
-    *modelutil.Session
+	*modelutil.Session
 }
 
 func GetSession() (*gocql.Session, error) {
@@ -34,6 +33,6 @@ func GetSession() (*gocql.Session, error) {
 	return &Session{session.Session}, nil
 }
 
-func (session *Session) GetUserByUuid(userId gocql.uuid) (model.User){
-  //DB access stuff goes here
+func (session *Session) GetUserByUuid(userId gocql.uuid) model.User {
+	//DB access stuff goes here
 }

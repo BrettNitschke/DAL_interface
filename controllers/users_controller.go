@@ -18,18 +18,18 @@ import (
 
 type (
 	// UsersController represents the controller for operating on the User resource
-	UsersController struct{
-    session cassandra.Dal
-  }
+	UsersController struct {
+		session cassandra.Dal
+	}
 )
 
 func NewUsersController() *UsersController {
-  session, err := cassandra.GetSession()
+	session, err := cassandra.GetSession()
 	if err != nil {
 		logrus.Errorf("Failed to connect to Cassandra: %v.", err)
 	}
 
-  return &UsersController{session}
+	return &UsersController{session}
 }
 
 func (uc *UsersController) GetUser(w http.ResponseWriter, r *http.Request) {
@@ -55,8 +55,8 @@ func (uc *UsersController) GetUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-  //DATABASE CALL
-  uc.session.GetUserByUuid(userId)
+	//DATABASE CALL
+	uc.session.GetUserByUuid(userId)
 
-  //DO rest of stuff here blah blah
+	//DO rest of stuff here blah blah
 }
